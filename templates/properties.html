@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<section id="properties">
+    <h2>All Properties</h2>
+    <div class="property-list">
+        {% for prop in properties %}
+            <div class="property-card">
+                <h3>{{ prop.title }}</h3>
+                <p><strong>Location:</strong> {{ prop.location }}</p>
+                <p><strong>Price:</strong> ₹{{ "{:,}".format(prop.price) }}</p>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

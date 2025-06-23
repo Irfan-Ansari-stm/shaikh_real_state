@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Add Property</h2>
+<form method="POST" enctype="multipart/form-data">
+    <label>Title</label>
+    <input type="text" name="title" required><br><br>
+
+    <label>Location</label>
+    <input type="text" name="location" required><br><br>
+
+    <label>Price (INR)</label>
+    <input type="number" name="price" required><br><br>
+
+    <label>Description</label><br>
+    <textarea name="description" required></textarea><br><br>
+
+    <label>Image</label>
+    <input type="file" name="image" required><br><br>
+
+    <input type="submit" value="Add Property">
+</form>
+{% endblock %}

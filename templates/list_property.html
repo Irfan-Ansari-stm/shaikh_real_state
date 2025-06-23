@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% block content %}
+
+<style>
+    #request {
+        max-width: 700px;
+        margin: 60px auto;
+        padding: 40px;
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    #request h2 {
+        text-align: center;
+        font-size: 28px;
+        color: #2c3e50;
+        margin-bottom: 30px;
+        position: relative;
+    }
+
+    #request h2::after {
+        content: "";
+        display: block;
+        width: 60px;
+        height: 4px;
+        background-color: #007BFF;
+        margin: 10px auto 0;
+        border-radius: 2px;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    form label {
+        margin-top: 15px;
+        margin-bottom: 5px;
+        font-weight: 600;
+        color: #333;
+    }
+
+    form input[type="text"],
+    form input[type="number"] {
+        padding: 12px 14px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        background-color: #f9f9f9;
+    }
+
+    button[type="submit"] {
+        margin-top: 30px;
+        background-color: #007BFF;
+        color: #fff;
+        padding: 12px;
+        font-size: 16px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    button[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+
+    @media (max-width: 768px) {
+        #request {
+            padding: 25px;
+            margin: 30px 15px;
+        }
+
+        #request h2 {
+            font-size: 24px;
+        }
+    }
+</style>
+
+<section id="request">
+    <h2>List Your Property</h2>
+    <form method="POST" action="{{ url_for('list_property') }}">
+        <label>Title:</label>
+        <input type="text" name="title" required>
+        <label>Location:</label>
+        <input type="text" name="location" required>
+        <label>Price:</label>
+        <input type="number" name="price" required>
+        <button type="submit">Submit Property</button>
+    </form>
+</section>
+{% endblock %}

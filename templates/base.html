@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shaikh's State | Real Estate</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <h1><a href="{{ url_for('index') }}">Shaikh Real Estate</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('all_properties') }}">Properties</a></li>
+                    <li><a href="{{ url_for('about') }}">About</a></li>
+                    <li><a href="{{ url_for('contact') }}">Contact</a></li>
+                    {% if session.get('admin') %}
+                        <li> <a href="{{ url_for('add_property') }}">Add Property</a></li>
+                        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                    {% else %}
+                       <!-- <li><a href="{{ url_for('login') }}">Admin Login</a></li>  --> 
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Flash Messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="container">
+                <ul class="messages">
+                    {% for category, message in messages %}
+                        <li class="{{ category }}">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <!-- Main Content -->
+    <main class="container">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+
+<style>
+    footer {
+        background-color: #2c3e50;
+        color: #ffffff;
+        padding: 20px 0;
+        text-align: center;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 14px;
+        position: relative;
+        bottom: 0;
+        width: 100%;
+        margin-top: 60px;
+    }
+
+    footer .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    footer p {
+        margin: 0;
+        letter-spacing: 0.5px;
+    }
+
+    @media (max-width: 768px) {
+        footer {
+            font-size: 13px;
+        }
+    }
+</style>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2025 Shaikh's State. All rights reserved.</p>
+    </div>
+</footer>
+
+
+</body>
+</html>

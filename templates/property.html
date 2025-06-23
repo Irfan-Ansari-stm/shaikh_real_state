@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>{{ prop.title }}</h2>
+<img src="{{ url_for('static', filename='uploads/' + (prop.image or 'default.jpg')) }}" alt="Property Image">
+<p><strong>Location:</strong> {{ prop.location }}</p>
+<p><strong>Price:</strong> ₹{{ "{:,}".format(prop.price) }}</p>
+{% endblock %}

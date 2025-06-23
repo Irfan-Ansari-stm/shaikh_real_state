@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+    h2 {
+        text-align: center;
+        font-size: 32px;
+        margin: 40px 0 20px;
+        color: #2c3e50;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .property-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 24px;
+        padding: 0 20px 60px;
+        max-width: 1200px;
+        margin: auto;
+    }
+
+    .property-card {
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+        overflow: hidden;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .property-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+    }
+
+    .property-card a {
+        text-decoration: none;
+        color: inherit;
+        display: block;
+        padding: 0 20px 20px;
+    }
+
+    .property-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+    }
+
+    .property-card h3 {
+        font-size: 20px;
+        margin: 15px 0 5px;
+        color: #333;
+    }
+
+    .property-card p {
+        font-size: 16px;
+        margin: 4px 0;
+        color: #555;
+    }
+
+    .admin-actions {
+        border-top: 1px solid #eee;
+        padding: 12px 20px;
+        background-color: #f9f9f9;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .admin-actions a {
+        color: #007BFF;
+        font-size: 14px;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .admin-actions a:hover {
+        color: #0056b3;
+    }
+
+    .property-grid p {
+        text-align: center;
+        color: #777;
+        grid-column: 1 / -1;
+    }
+
+    @media (max-width: 768px) {
+        .property-card img {
+            height: 180px;
+        }
+
+        .property-card h3 {
+            font-size: 18px;
+        }
+    }
+</style>
+<h2>Available Properties</h2>
+<div class="property-grid">
+    {% for prop in properties %}
+    <div class="property-card">
+        <a href="{{ url_for('view_property', property_id=prop.id) }}">
+            <img src="{{ url_for('static', filename='uploads/' + (prop.image or 'default.jpg')) }}" alt="Property Image">
+            <h3>{{ prop.title }}</h3>
+            <p>{{ prop.location }}</p>
+            <p>₹{{ prop.formatted_price }}</p>
+        </a>
+        {% if session.get('admin') %}
+        <div class="admin-actions">
+            <a href="{{ url_for('edit_property', property_id=prop.id) }}">Edit</a>
+            <a href="{{ url_for('delete_property', property_id=prop.id) }}">Delete</a>
+        </div>
+        {% endif %}
+    </div>
+    {% else %}
+    <p>No properties available right now.</p>
+    {% endfor %}
+</div>
+{% endblock %}

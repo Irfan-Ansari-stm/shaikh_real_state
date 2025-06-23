@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+    h2 {
+        text-align: center;
+        font-size: 32px;
+        color: #2c3e50;
+        margin: 40px 0 20px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .property-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 24px;
+        padding: 0 30px 60px;
+        max-width: 1200px;
+        margin: auto;
+    }
+
+    .property-card {
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+        overflow: hidden;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .property-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+    }
+
+    .property-card a {
+        color: inherit;
+        text-decoration: none;
+        display: block;
+        padding: 0 20px 20px;
+    }
+
+    .property-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+    }
+
+    .property-card h3 {
+        font-size: 20px;
+        margin: 15px 0 5px;
+        color: #333;
+    }
+
+    .property-card p {
+        font-size: 16px;
+        color: #555;
+        margin: 4px 0;
+    }
+
+    .admin-actions {
+        padding: 10px 20px 20px;
+        border-top: 1px solid #eee;
+        display: flex;
+        justify-content: space-between;
+        background-color: #f9f9f9;
+    }
+
+    .admin-actions a {
+        font-size: 14px;
+        color: #007BFF;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .admin-actions a:hover {
+        color: #0056b3;
+    }
+
+    @media (max-width: 768px) {
+        .property-card img {
+            height: 180px;
+        }
+    }
+</style>
+
+<h2>All Properties</h2>
+<div class="property-grid">
+    {% for prop in properties %}
+    <div class="property-card">
+        <a href="{{ url_for('view_property', property_id=prop.id) }}">
+            <img src="{{ url_for('static', filename='uploads/' + (prop.image or 'default.jpg')) }}" alt="Image">
+            <h3>{{ prop.title }}</h3>
+            <p>{{ prop.location }}</p>
+            <p>₹{{ prop.formatted_price }}</p>
+        </a>
+        {% if session.get('admin') %}
+        <div class="admin-actions">
+            <a href="{{ url_for('edit_property', property_id=prop.id) }}">Edit</a>
+            <a href="{{ url_for('delete_property', property_id=prop.id) }}">Delete</a>
+        </div>
+        {% endif %}
+    </div>
+    {% else %}
+    <p>No properties found.</p>
+    {% endfor %}
+</div>
+{% endblock %}

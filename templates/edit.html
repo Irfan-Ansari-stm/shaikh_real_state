@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% block content %}
+
+<style>
+    .edit-form-container {
+        max-width: 700px;
+        margin: 60px auto;
+        padding: 40px;
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .edit-form-container h2 {
+        text-align: center;
+        color: #2c3e50;
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+
+    form label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 6px;
+        color: #333;
+    }
+
+    form input[type="text"],
+    form input[type="number"],
+    form input[type="file"],
+    form textarea {
+        width: 100%;
+        padding: 10px 14px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 16px;
+        background-color: #fafafa;
+    }
+
+    form textarea {
+        resize: vertical;
+        min-height: 120px;
+    }
+
+    form input[type="submit"] {
+        background-color: #007BFF;
+        color: white;
+        padding: 12px;
+        font-size: 16px;
+        border: none;
+        border-radius: 6px;
+        width: 100%;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    form input[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+
+    @media (max-width: 768px) {
+        .edit-form-container {
+            padding: 25px;
+            margin: 30px 15px;
+        }
+
+        .edit-form-container h2 {
+            font-size: 24px;
+        }
+    }
+</style>
+
+<h2>Edit Property</h2>
+<form method="POST" enctype="multipart/form-data">
+    <label>Title</label>
+    <input type="text" name="title" value="{{ property.title }}" required><br><br>
+
+    <label>Location</label>
+    <input type="text" name="location" value="{{ property.location }}" required><br><br>
+
+    <label>Price (INR)</label>
+    <input type="number" name="price" value="{{ property.price }}" required><br><br>
+
+    <label>Description</label><br>
+    <textarea name="description" required>{{ property.description }}</textarea><br><br>
+
+    <label>Replace Image (optional)</label>
+    <input type="file" name="image"><br><br>
+
+    <input type="submit" value="Update Property">
+</form>
+{% endblock %}

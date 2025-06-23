@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+    #about {
+        max-width: 900px;
+        margin: 60px auto;
+        padding: 40px;
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        text-align: center;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    #about h2 {
+        font-size: 32px;
+        color: #2c3e50;
+        margin-bottom: 20px;
+        position: relative;
+        display: inline-block;
+    }
+
+    #about h2::after {
+        content: "";
+        display: block;
+        width: 60px;
+        height: 4px;
+        background-color: #007BFF;
+        margin: 8px auto 0;
+        border-radius: 2px;
+    }
+
+    #about p {
+        font-size: 18px;
+        color: #555;
+        line-height: 1.7;
+        margin-top: 15px;
+    }
+
+    @media (max-width: 768px) {
+        #about {
+            padding: 25px;
+            margin: 30px 15px;
+        }
+
+        #about h2 {
+            font-size: 26px;
+        }
+
+        #about p {
+            font-size: 16px;
+        }
+    }
+</style>
+<section id="about">
+    <h2>About Us</h2>
+    <p>Shaikh's State is your trusted partner in buying and selling properties across India. Whether it's a luxury villa, a modern flat, or a commercial space — we've got it all.</p>
+</section>
+{% endblock %}

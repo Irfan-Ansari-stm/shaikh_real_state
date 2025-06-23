@@ -1,0 +1,144 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+    #contact {
+        max-width: 800px;
+        margin: 60px auto;
+        padding: 40px;
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    #contact h2 {
+        font-size: 32px;
+        color: #2c3e50;
+        margin-bottom: 20px;
+        text-align: center;
+        position: relative;
+    }
+
+    #contact h2::after {
+        content: "";
+        display: block;
+        width: 60px;
+        height: 4px;
+        background-color: #007BFF;
+        margin: 8px auto 20px;
+        border-radius: 2px;
+    }
+
+    #contact p {
+        font-size: 16px;
+        color: #444;
+        margin-bottom: 8px;
+        text-align: center;
+    }
+
+    form.contact-form {
+        margin-top: 30px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 6px;
+        color: #333;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        width: 100%;
+        padding: 10px 14px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        background-color: #fafafa;
+    }
+
+    .form-group textarea {
+        resize: vertical;
+        min-height: 100px;
+    }
+
+    button[type="submit"] {
+        background-color: #007BFF;
+        color: #fff;
+        padding: 12px 24px;
+        font-size: 16px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        width: 100%;
+    }
+
+    button[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+
+    @media (max-width: 768px) {
+        #contact {
+            padding: 25px;
+            margin: 30px 15px;
+        }
+
+        #contact h2 {
+            font-size: 26px;
+        }
+    }
+</style>
+
+<section id="contact">
+    <h2>Contact Us</h2>
+    <p>Email: contact@shaikhsestate.com</p>
+    <p>Phone: +91-9876543210</p>
+    <p>Address: 123 Real Estate Street, Mumbai, India</p>
+
+    <form class="contact-form" method="POST" action="/request-property">
+        <h3 style="margin: 30px 0 10px; text-align:center; color:#2c3e50;">Request to Add Your Property</h3>
+        
+        <div class="form-group">
+            <label for="owner_name">Your Name</label>
+            <input type="text" name="owner_name" id="owner_name" required>
+        </div>
+
+        <div class="form-group">
+            <label for="owner_email">Email</label>
+            <input type="email" name="owner_email" id="owner_email" required>
+        </div>
+
+        <div class="form-group">
+            <label for="owner_phone">Phone</label>
+            <input type="tel" name="owner_phone" id="owner_phone" required>
+        </div>
+
+        <div class="form-group">
+            <label for="property_title">Property Title</label>
+            <input type="text" name="property_title" id="property_title" required>
+        </div>
+
+        <div class="form-group">
+            <label for="property_location">Location</label>
+            <input type="text" name="property_location" id="property_location" required>
+        </div>
+
+        <div class="form-group">
+            <label for="property_price">Estimated Price</label>
+            <input type="text" name="property_price" id="property_price" required>
+        </div>
+
+        <div class="form-group">
+            <label for="property_description">Description</label>
+            <textarea name="property_description" id="property_description" required></textarea>
+        </div>
+
+        <button type="submit">Submit Request</button>
+    </form>
+</section>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- About Us Section -->
+<section id="about">
+    <h2>About Us</h2>
+    <p>Welcome to Shaikh's State — your one-stop destination for premium real estate properties at the best prices. We help you find homes, offices, and plots that match your dreams and budgets.</p>
+</section>
+
+<!-- Properties Section -->
+<section id="properties">
+    <h2>All Properties</h2>
+    <div class="property-list">
+        {% for prop in properties %}
+            <div class="property-card">
+                <h3>{{ prop.title }}</h3>
+                <p><strong>Location:</strong> {{ prop.location }}</p>
+                <p><strong>Price:</strong> ₹{{ "{:,}".format(prop.price) }}</p>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- List Your Property -->
+<section id="request">
+    <h2>List Your Property</h2>
+    <form method="POST" action="{{ url_for('add_property') }}">
+        <label>Title:</label>
+        <input type="text" name="title" required>
+        <label>Location:</label>
+        <input type="text" name="location" required>
+        <label>Price:</label>
+        <input type="number" name="price" required>
+        <button type="submit">Submit Property</button>
+    </form>
+</section>
+
+<!-- Contact Section -->
+<section id="contact">
+    <h2>Contact Us</h2>
+    <p>Email: contact@shaikhsestate.com</p>
+    <p>Phone: +91-9876543210</p>
+    <p>Address: 123 Real Estate Street, Mumbai, India</p>
+</section>
+
+{% endblock %}

@@ -1,0 +1,164 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+header, footer {
+    background: #222;
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+}
+nav a {
+    margin: 0 10px;
+    color: #fff;
+    text-decoration: none;
+}
+main {
+    padding: 20px;
+}
+.property-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+.property-card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 250px;
+}
+.property-card img {
+    max-width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+.property-detail img {
+    max-width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+.admin-actions {
+    margin-top: 10px;
+}
+.messages {
+    list-style: none;
+    padding: 10px;
+}
+.messages li.success { color: green; }
+.messages li.danger { color: red; }
+
+
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Fonts */
+body {
+    font-family: 'Urbanist', sans-serif;
+    background-color: #f4f6f8;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Container */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Header */
+header {
+    background: #1a1a2e;
+    color: #fff;
+    padding: 20px 0;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+header h1 {
+    font-size: 28px;
+    font-weight: 800;
+    display: inline-block;
+}
+
+header h1 a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+header h1 a:hover {
+    color: #00adb5;
+}
+
+header nav {
+    float: right;
+    margin-top: 5px;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+header nav ul li {
+    display: inline;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background 0.3s;
+}
+
+header nav ul li a:hover {
+    background-color: #00adb5;
+}
+
+/* Main Content */
+main {
+    padding: 20px 0;
+}
+
+/* Messages */
+.messages {
+    list-style: none;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-left: 4px solid #00adb5;
+    background-color: #e8f8f5;
+    color: #1a1a1a;
+    font-weight: 500;
+}
+
+/* Footer */
+footer {
+    background: #1a1a2e;
+    color: #ddd;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+    font-size: 14px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    header nav {
+        float: none;
+        margin-top: 10px;
+        text-align: center;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
